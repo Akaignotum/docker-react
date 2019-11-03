@@ -7,3 +7,18 @@ before_install:
 
 script:
   - docker run -e CI=true unowen/docker-react npm run test
+
+#AWS Elastic Beanstalk config
+#deploy:
+  #provider: elasticbeanstalk
+  #region: "<whereYouCreatedElasticBeanstalk(youCanCheckItFromEBeanstalkURL_definedBefore.elasticbeanstalk.com)>"
+  #app: "docker" (what you have defined in AWS EBS)
+  #env: "Docker-env" 
+  #bucket_name: "elasticbeanstalk-us-west-2-321132321" (AWS - services -> s3)
+  #bucket_path: "docker" (default is same as app name)
+  #on:
+    # branch: master (deploy only when master is updated)
+  #access_key_id: $AWS_ACCESS_KEY
+  #secret_access_key:
+    #secure: "$AWS_SECRET_KEY"
+#/AWS Elastic Beanstalk config

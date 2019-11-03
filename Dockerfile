@@ -2,6 +2,7 @@
 FROM node:alpine as builder 
 WORKDIR /app
 COPY package.json .
+# COPY package*.json . (CONFIG FOR AWS EBS)
 RUN npm install
 COPY . .
 RUN npm run build
@@ -10,4 +11,5 @@ RUN npm run build
 
 #RUN PHASE, default command will start nginx
 FROM nginx
+# EXPOSE 80 (CONFIG for porting in AWS EBS)
 COPY --from=builder /app/build /usr/share/nginx/html
